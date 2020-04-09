@@ -1,0 +1,23 @@
+{
+  "name": "k8s-apply",
+  "version": "1.0.0",
+  "description": "A minimalistic kubernetes api interface - without any dependencies",
+  "main": "k8s-apply.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeraldWodni/k8s-apply.git"
+  },
+  "keywords": [
+    "kubernetes",
+    "k8s"
+  ],
+  "author": "Gerald Wodni <gerald.wodni@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GeraldWodni/k8s-apply/issues"
+  },
+  "homepage": "https://github.com/GeraldWodni/k8s-apply#readme"
+}

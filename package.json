@@ -1,6 +1,6 @@
 {
   "name": "k8s-apply",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A minimalistic kubernetes api interface - without any dependencies",
   "main": "k8s-apply.js",
   "scripts": {

@@ -4,10 +4,6 @@ const fs = require("fs");
 const https = require("https");
 const tls = require("tls");
 
-/* get credentials */
-const certificate = fs.readFileSync("/var/run/secrets/kubernetes.io/serviceaccount/ca.crt").toString();
-const token = fs.readFileSync("/var/run/secrets/kubernetes.io/serviceaccount/token").toString();
-
 function defaults( target, defaults ) {
     Object.keys( defaults ).forEach( key => {
         if( !(key in target) )
@@ -18,6 +14,10 @@ function defaults( target, defaults ) {
 
 class K8sApi {
     constructor() {
+        /* get credentials */
+        const certificate = fs.readFileSync("/var/run/secrets/kubernetes.io/serviceaccount/ca.crt").toString();
+        this.token = fs.readFileSync("/var/run/secrets/kubernetes.io/serviceaccount/token").toString();
+
         /* Monkey patch TLS to add Kubernetes' self signed certificate */
         /* see: https://medium.com/trabe/monkey-patching-tls-in-node-js-to-support-self-signed-certificates-with-custom-root-cas-25c7396dfd2a */
         const origCreateSecureContext = tls.createSecureContext;
@@ -42,7 +42,7 @@ class K8sApi {
 
         /* default headers */
         defaults( options.headers, {
-            Authorization: "Bearer "+token
+            Authorization: "Bearer "+this.token
         });
         console.log( "REQUEST", options.method, path );
 
